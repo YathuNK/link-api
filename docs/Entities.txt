@@ -1,0 +1,53 @@
+MongoDB Schemas
+1. Person
+{
+  _id: ObjectId,
+  firstName: String - required,
+  lastName: String,
+  description: String (maximum 500 char),
+  dateOfBirth: Date,
+  websites: [String],
+  images: [String], // Cloudinary URLs
+  place: String // Place ID (ref)
+}
+
+2. Entity
+{
+  _id: ObjectId,
+  type: String, EntityType (ref) // e.g., company, shop, etc.
+  name: String - required,
+  description: String,
+  websites: [String],
+  images: [String],
+  place: String // Place ID (ref)
+}
+
+3. Place
+{
+  _id: ObjectId,
+  name: String - required,
+  description: String,
+  images: [String]
+}
+
+4. Relationship
+{
+  _id: ObjectId,
+  from: String - required,// entity/person ID
+  to: String - required,   // entity/person ID
+  relationship: String - required, RelationshipType(ref)
+  reverseRelationship: String - required, RelationshipType(ref)
+}
+
+5. 🔁 RelationshipType Schema
+{
+  _id: ObjectId,
+  name: String - required,
+}
+
+6. 🏷️ EntityType Schema
+{
+  _id: ObjectId,
+  name: String - required, // e.g., company, shop, restaurant
+  description: String
+}

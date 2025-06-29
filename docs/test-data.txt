@@ -1,0 +1,40 @@
+Person
+
+| id | firstname | lastname | description | facebook | linkdin | place |
+| --- | --- | --- | --- | --- | --- | --- |
+| me | Yathurshan | Kalanantharasan | me |  |  | Erlalai |
+| mthu | Mithurshan | Kalanantharasan | brother |  |  | Erlalai |
+| father | Kalanantharasan |  |  |  |  | Erlalai |
+| sana | Nilaxshan |  |  |  |  | Erlalai |
+| aathi | Aathi |  |  |  |  | Erlalai |
+| sivappiriyan | Sivapriyan |  |  |  |  | Kaarainagar |
+| thuvaragan_uom | Thuvaragan |  |  |  |  |  |
+
+Entity (with at type - company or shop)
+
+| id | name | description | website | linkdin | place |
+| --- | --- | --- | --- | --- | --- |
+| mitra | Mitra Innovation |  | https://mitrai.com/ |  | Moratuwa |
+| invorg | Invorg |  |  |  | Jaffna |
+| gtn | GTN globals |  |  |  |  |
+
+PlaceDetails
+
+| id | name | description |  |  |
+| --- | --- | --- | --- | --- |
+| erlalai | Erlalai |  |  |  |
+| moratuwa | Moratuwa |  |  |  |
+| jaffna | Jaffna |  |  |  |
+
+Relationships
+
+| From  | To | relationship | relationship other way |
+| --- | --- | --- | --- |
+| me  | mithu | brother | brother |
+| me | father | parent | child |
+| me | sana | friend | friend |
+| sana | aathi | brother | brother |
+| mithu | thuvaragan_uom | friend | friend |
+| me | Mitra | works at | employee |
+| mithu | Invorg | workes at | employee |
+|  |  |  |  |
