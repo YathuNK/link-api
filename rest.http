@@ -1,0 +1,154 @@
+@baseUrl = http://localhost:8000
+# For local testing, uncomment the line below:
+# @baseUrl = http://localhost:8000
+
+###
+# Health Check - Test if API is running
+GET {{baseUrl}}/health
+
+###
+# Get All Persons
+GET {{baseUrl}}/api/persons
+
+###
+# Get All Persons with Pagination
+GET {{baseUrl}}/api/persons?page=1&limit=10
+
+###
+# Get Person by ID (replace with actual ID after creating some data)
+GET {{baseUrl}}/api/person/507f1f77bcf86cd799439011
+
+###
+# Get All Entities
+GET {{baseUrl}}/api/entities
+
+###
+# Get All Entities with Pagination
+GET {{baseUrl}}/api/entities?page=1&limit=5
+
+###
+# Get Entity by ID (replace with actual ID)
+GET {{baseUrl}}/api/entity/507f1f77bcf86cd799439011
+
+###
+# Get All Places
+GET {{baseUrl}}/api/places
+
+###
+# Get All Places with Pagination
+GET {{baseUrl}}/api/places?page=1&limit=10
+
+###
+# Get Place by ID (replace with actual ID)
+GET {{baseUrl}}/api/place/507f1f77bcf86cd799439011
+
+###
+# Get All Relationships
+GET {{baseUrl}}/api/relationships
+
+###
+# Get Relationship by ID (replace with actual ID)
+GET {{baseUrl}}/api/relationship/507f1f77bcf86cd799439011
+
+###
+# Get All Relationship Types
+GET {{baseUrl}}/api/relationship-types
+
+###
+# Get Relationship Type by ID (replace with actual ID)
+GET {{baseUrl}}/api/relationship-type/507f1f77bcf86cd799439011
+
+###
+# Get All Entity Types
+GET {{baseUrl}}/api/entity-types
+
+###
+# Get Entity Type by ID (replace with actual ID)
+GET {{baseUrl}}/api/entity-type/507f1f77bcf86cd799439011
+
+###
+# Global Search - Search across all data
+GET {{baseUrl}}/api/search?q=john
+
+###
+# Global Search - Search with specific term
+GET {{baseUrl}}/api/search?q=company
+
+###
+# Filtered Search - Search by type
+GET {{baseUrl}}/api/search/filter?type=person
+
+###
+# Filtered Search - Search by place
+GET {{baseUrl}}/api/search/filter?place=London
+
+###
+# Filtered Search - Combined filters
+GET {{baseUrl}}/api/search/filter?type=person&place=London
+
+###
+# Sample POST Requests (for creating test data)
+
+###
+# Create a Person
+POST {{baseUrl}}/api/person
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "phone": "+1234567890",
+  "address": "123 Main St, City, Country",
+  "dateOfBirth": "1990-01-15",
+  "nationality": "American",
+  "description": "Software Developer"
+}
+
+###
+# Create a Place
+POST {{baseUrl}}/api/place
+Content-Type: application/json
+
+{
+  "name": "London",
+  "type": "City",
+  "country": "United Kingdom",
+  "coordinates": {
+    "latitude": 51.5074,
+    "longitude": -0.1278
+  },
+  "description": "Capital city of England"
+}
+
+###
+# Create an Entity
+POST {{baseUrl}}/api/entity
+Content-Type: application/json
+
+{
+  "name": "TechCorp Inc",
+  "type": "Company",
+  "description": "A leading technology company",
+  "website": "https://techcorp.com",
+  "establishedDate": "2010-03-15"
+}
+
+###
+# Create a Relationship Type
+POST {{baseUrl}}/api/relationship-type
+Content-Type: application/json
+
+{
+  "name": "Works At",
+  "description": "Employment relationship between person and organization"
+}
+
+###
+# Create an Entity Type
+POST {{baseUrl}}/api/entity-type
+Content-Type: application/json
+
+{
+  "name": "Technology Company",
+  "description": "Companies operating in the technology sector"
+}
