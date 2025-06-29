@@ -9,3 +9,16 @@ dist/
 .DS_Store
 coverage/
 .nyc_output/
+
+# Deployment
+.vercel
+.netlify
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
