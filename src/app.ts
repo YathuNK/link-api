@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -38,7 +38,7 @@ class App {
 
   private initializeRoutes(): void {
     // Health check
-    this.app.get('/health', (_req, res) => {
+    this.app.get('/health', (_req: Request, res: Response) => {
       res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
     });
 
