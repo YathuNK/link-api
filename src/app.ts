@@ -7,6 +7,7 @@ import { config } from './config/config';
 import { connectDB } from './utils/db';
 import { errorHandler } from './middleware/errorHandler';
 import { notFoundHandler } from './middleware/notFoundHandler';
+import { authMiddleware } from './middleware/authMiddleware';
 
 // Import all route modules
 import { personRoutes } from './person/routes';
@@ -16,6 +17,7 @@ import { relationshipRoutes } from './relationship/routes';
 import { relationshipTypeRoutes } from './relationship-type/routes';
 import { entityTypeRoutes } from './entity-type/routes';
 import { searchRoutes } from './search/routes';
+import { authRoutes } from './user/routes';
 
 class App {
   public app: express.Application;
@@ -42,7 +44,13 @@ class App {
       res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
     });
 
-    // API routes
+    // Authentication routes (no auth required)
+    this.app.use('/api', authRoutes);
+
+    // Apply authentication middleware to all other API routes
+    this.app.use('/api', authMiddleware);
+
+    // Protected API routes
     this.app.use('/api', personRoutes);
     this.app.use('/api', entityRoutes);
     this.app.use('/api', placeRoutes);
