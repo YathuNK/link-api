@@ -4,6 +4,7 @@ export interface IPlace extends Document {
   name: string;
   description?: string;
   images: string[];
+  region?: mongoose.Types.ObjectId | IPlace;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -20,7 +21,12 @@ const PlaceSchema: Schema = new Schema({
     trim: true,
     maxlength: [1000, 'Description cannot exceed 1000 characters']
   },
-  images: [String]
+  images: [String],
+  region: {
+    type: Schema.Types.ObjectId,
+    ref: 'Place',
+    required: false
+  }
 }, {
   timestamps: true,
   toJSON: { virtuals: true },
@@ -29,5 +35,6 @@ const PlaceSchema: Schema = new Schema({
 
 // Indexes
 PlaceSchema.index({ name: 1 });
+PlaceSchema.index({ region: 1 });
 
 export const Place = mongoose.model<IPlace>('Place', PlaceSchema);

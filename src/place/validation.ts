@@ -10,7 +10,10 @@ const placeSchema = Joi.object({
   description: Joi.string().trim().max(1000).allow('').messages({
     'string.max': 'Description cannot exceed 1000 characters'
   }),
-  images: Joi.array().items(Joi.string()).default([])
+  images: Joi.array().items(Joi.string()).default([]),
+  region: Joi.string().regex(/^[0-9a-fA-F]{24}$/).optional().allow('', null).messages({
+    'string.pattern.base': 'Region must be a valid MongoDB ObjectId'
+  })
 });
 
 const updatePlaceSchema = placeSchema.fork(
